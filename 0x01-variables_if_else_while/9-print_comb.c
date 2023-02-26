@@ -9,19 +9,21 @@
 
 int main(void)
 {
-	int alpha, i;
-	char sep[] = ", ";
+	int alpha;
+	int sep = 44;
 
 	for (alpha = 48; alpha < 58; alpha++)
 	{
 		putchar(alpha);
 		if (alpha < 57)
 		{
-			for (i = 0; i < 2; i++)
+			while (sep > 31)
 			{
-				putchar(sep[i]);
+				putchar(sep);
+				sep -= 12;
 			}
 		}
+		sep = 44;
 		
 	}
 	putchar(10);
