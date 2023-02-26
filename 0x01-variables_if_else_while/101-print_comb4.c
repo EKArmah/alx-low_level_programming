@@ -5,7 +5,7 @@
  * @void: empty
  *
  * Description - print all combo of 3 digits
- * Print only smallest combo of two digits
+ * Print only smallest combo of 3 digits
  * Numbers should not repeat
  * Only use putchar fcn
  *
@@ -14,23 +14,26 @@
 
 int main(void)
 {
-	int i, j, k, x;
+	int i, j, x, k;
 
-	for (i = 48; i < j; i++)
+	for (i = 48; i < 56; i++)
 	{
-		for (j = 49; j < x; j++)
+		for (j = 49; j < 57; j++)
 		{
-			for (x = 
-			if (i != j)
+			for (x = 50; x < 58; x++)
 			{
-				putchar(i);
-				putchar(j);
-				if ((i != 56) || (j != 57))
+				if (i != j && i < j && j < x)
 				{
-					for (k = 44; k > 31;)
+					putchar(i);
+					putchar(j);
+					putchar(x);
+					if ((i != 55) || (j != 56) || (x != 57))
 					{
-						putchar(k);
-						k -= 12;
+						for (k = 44; k > 31;)
+						{
+							putchar(k);
+							k -= 12;
+						}
 					}
 				}
 			}
