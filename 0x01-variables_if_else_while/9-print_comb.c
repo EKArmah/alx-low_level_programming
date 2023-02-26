@@ -24,7 +24,6 @@ int main(void)
 			}
 		}
 		sep = 44;
-		
 	}
 	putchar(10);
 
