@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * abs - computes abs val of an int
+ * _abs - computes abs val of an int
  * @c: int
  *
  * Return: abs val of c

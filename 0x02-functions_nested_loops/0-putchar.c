@@ -2,8 +2,9 @@
 #include "main.h"
 
 /**
- * _putchar - prints "_putchar"
+ * main - prints "_putchar"
  * @void: empty
+ *
  *
  * Return: 0 on success
  */
