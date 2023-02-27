@@ -8,7 +8,7 @@
  * Return: 0 on success
  */
 
-int _putchar(int)
+int main(void)
 {
 	char ptch[] = "_putchar";
 	int count;
