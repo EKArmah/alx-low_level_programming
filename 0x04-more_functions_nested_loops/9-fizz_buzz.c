@@ -33,7 +33,7 @@ int main(void)
 			printf("%d ", count);
 		}
 
-		if (count != 100)
+		if (count != 99)
 		{
 			putchar(' ');
 		}
