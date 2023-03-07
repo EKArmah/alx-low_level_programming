@@ -38,7 +38,7 @@ char *_strpbrk(char *s, char *accept)
 
 	if (lowest_s == count_s + 1)
 	{
-		return (NULL);
+		return ('\0');
 	}
 	else
 	{
