@@ -4,13 +4,31 @@
  * root_calc - recurse through multiplication of
  * ints to determine sqrt
  * @i: int
+ * @root: original val
  *
  * Return: power of i
  */
 
-int root_calc(int i)
+int root_calc(int i, int root)
 {
-	return (i * i);
+	int temp;
+
+	temp = i * i;
+
+	if (temp == root)
+	{
+		return (i);
+	}
+	else if (temp < root)
+	{
+		i++;
+		return (root_calc(i, root));
+	}
+	else
+	{
+		return (-1);
+	}
+	return (i);
 }
 
 /**
@@ -22,23 +40,21 @@ int root_calc(int i)
 
 int _sqrt_recursion(int n)
 {
-	int i = 1, curr = 0;
+	int i = 1, curr;
 
 	if (!(n / 1) || n < 0)
 	{
 		return (-1);
 	}
 
-	while (curr < n)
-	{
-		curr = root_calc(i);
-		i++;
-	}
+	curr = root_calc(i, n);
 
-	if (curr == n)
+	if (curr != -1)
 	{
-		return (i - 1);
+		return (curr);
 	}
-
-	return (-1);
+	else
+	{
+		return (-1);
+	}
 }

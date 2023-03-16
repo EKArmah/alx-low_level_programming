@@ -10,14 +10,25 @@
 
 int prime_wrap(int n, int i)
 {
+	int prime_stat;
+
 	if (n % i == 0)
 	{
-		return (0);
+		prime_stat = 0;
+		return (prime_stat);
 	}
 	else
 	{
-		return (1);
+		if (i >= 10)
+		{
+			prime_stat = 1;
+			return (1);
+		}
+		prime_stat = 1;
+		i++;
+		prime_stat = prime_wrap(n, i);
 	}
+	return (prime_stat);
 }
 
 /**
@@ -36,15 +47,7 @@ int is_prime_number(int n)
 		return (0);
 	}
 
-	while (i < 10)
-	{
-		prime = prime_wrap(n, i);
-		i++;
-		if (prime == 0)
-		{
-			return (0);
-		}
-	}
+	prime = prime_wrap(n, i);
 
 	return (prime);
 }
