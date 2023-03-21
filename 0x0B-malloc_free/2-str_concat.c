@@ -11,6 +11,10 @@ int s_len(char *s)
 {
 	int count = 0;
 
+	if (s == NULL)
+	{
+		return (0);
+	}
 	while (s[count])
 	{
 		count++;
