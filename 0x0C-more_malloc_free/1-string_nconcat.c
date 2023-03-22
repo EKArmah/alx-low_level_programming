@@ -58,7 +58,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		{
 			conc[i] = s2[i];
 		}
-		conc[i++] = '\0';
+		conc[i] = '\0';
 		return (conc);
 	}
 	else
@@ -67,12 +67,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		{
 			conc[i] = s1[i];
 		}
-		for (j = 0; i <= c1 + c2; i++, j++)
+		for (j = 0; i < c1 + c2; i++, j++)
 		{
 			conc[i] = s2[j];
 		}
 		conc[i] = '\0';
 	}
-	printf("Conc: %s\n", conc);
 	return (conc);
 }
