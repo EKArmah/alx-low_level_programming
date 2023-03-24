@@ -26,17 +26,13 @@ void print_dog(struct dog *d)
 	char *d_name, *d_owner;
 	float d_age;
 
-	if (d == NULL)
-	{
-		printf(" ");
-	}
-	else
+	if (d)
 	{
 		d_name = check_nul(d->name);
 		d_age = d->age;
 		d_owner = check_nul(d->owner);
 		printf("Name: %s\n", d_name);
 		printf("Age: %f\n", d_age);
-		printf("Owner: %s\n", d_owner);	
+		printf("Owner: %s\n", d_owner);
 	}
 }

@@ -6,16 +6,16 @@
  * @age: dog age
  * @owner: dog owner
  *
- * Return: pointer to new dog in dog_t 
+ * Return: pointer to new dog in dog_t
  */
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *n_dog;
-	long unsigned int counter;
+	unsigned long int counter;
 
 	n_dog = malloc(sizeof(dog_t));
-	n_dog->name = malloc(sizeof(char) * strlen(name));
+	n_dog->name = malloc(sizeof(char) * (strlen(name) + 1));
 	if (n_dog->name == NULL)
 	{
 		free(n_dog);
@@ -25,10 +25,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{
 		n_dog->name[counter] = name[counter];
 	}
+	n_dog->name[counter] = '\0';
 
-
-	n_dog->owner = malloc(sizeof(char) * strlen(owner));
-	if(n_dog->owner == NULL)
+	n_dog->owner = malloc(sizeof(char) * (strlen(owner) + 1));
+	if (n_dog->owner == NULL)
 	{
 		free(n_dog->name);
 		free(n_dog);
@@ -38,6 +38,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{
 		n_dog->owner[counter] = owner[counter];
 	}
+	n_dog->owner[counter] = '\0';
 
 	n_dog->age = age;
 
