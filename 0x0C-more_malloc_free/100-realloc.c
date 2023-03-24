@@ -56,12 +56,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	if (new_size == 0)
 	{
-		printf("new size: %u\n", new_size);
+		/*printf("new size: %u\n", new_size);*/
 		if (ptr != NULL)
 		{
 			free(ptr);
 		}
-		return (NULL);
+		return ('\0');
 	}
 
 	new_arr = malloc(new_size);
@@ -73,13 +73,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	if (ptr == NULL)
 	{
-		printf("New arr formed but ptr is: NULL\n");
+		/*printf("New arr formed but ptr is: NULL\n");*/
 		free(ptr);
 		return (new_arr);
 	}
 	else
 	{
-		printf("New Arr formed, calling wrapper function...\n");
+		/*printf("New Arr formed, calling wrapper function...\n");*/
 		new_arr	= fill_wrapper(ptr, new_arr, old_size, new_size);
 	}
 	return (new_arr);
