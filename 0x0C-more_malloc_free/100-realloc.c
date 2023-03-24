@@ -54,21 +54,17 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (ptr);
 	}
 
-	if (new_size == 0)
+	if (new_size == 0 && ptr != NULL)
 	{
 		/*printf("new size: %u\n", new_size);*/
-		if (ptr != NULL)
-		{
-			free(ptr);
-		}
-		return ('\0');
+		free(ptr);
+		return (NULL);
 	}
 
 	new_arr = malloc(new_size);
 
 	if (new_arr == NULL)
 	{
-		free(ptr);
 		return (NULL);
 	}
 	if (ptr == NULL)
@@ -82,5 +78,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		/*printf("New Arr formed, calling wrapper function...\n");*/
 		new_arr	= fill_wrapper(ptr, new_arr, old_size, new_size);
 	}
+	free(ptr);
 	return (new_arr);
 }
