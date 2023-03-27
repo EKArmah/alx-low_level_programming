@@ -12,17 +12,17 @@ int main(int argc, char *argv[])
 {
 	int first, sec, operated;
 
-	if (atoi(argv[3]) == 0 && 
-	(strcmp(argv[2], "/") == 0 || strcmp(argv[2], "%") == 0))
-	{
-		printf("Error\n");
-		exit(100);
-	}
-
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
+	}
+
+	if (atoi(argv[3]) == 0 &&
+	(strcmp(argv[2], "/") == 0 || strcmp(argv[2], "%") == 0))
+	{
+		printf("Error\n");
+		exit(100);
 	}
 
 	if (get_op_func(argv[2]) == NULL)
