@@ -77,6 +77,11 @@ void print_all(const char * const format, ...)
 		{"s", print_str}
 	};
 
+	if (!format)
+	{
+		printf("\n");
+		exit(0);
+	}
 	va_start(mix_arr, format);
 	while (format[format_count])
 	{
@@ -100,6 +105,6 @@ void print_all(const char * const format, ...)
 		type_count = 0;
 		format_count++;
 	}
-	printf("\n");
 	va_end(mix_arr);
+	printf("\n");
 }
