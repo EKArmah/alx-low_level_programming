@@ -35,16 +35,19 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 	va_start(str_arr, n);
 
-	temp = check_null(va_arg(str_arr, char *));
-	printf("%s", temp);
-	for (count = 0; count < n - 1; count++)
+	if (n != 0)
 	{
-		if (separator != NULL)
-		{
-			printf("%s", separator);
-		}
 		temp = check_null(va_arg(str_arr, char *));
 		printf("%s", temp);
+		for (count = 0; count < n - 1; count++)
+		{
+			if (separator != NULL)
+			{
+				printf("%s", separator);
+			}
+			temp = check_null(va_arg(str_arr, char *));
+			printf("%s", temp);
+		}
 	}
 	printf("\n");
 	va_end(str_arr);

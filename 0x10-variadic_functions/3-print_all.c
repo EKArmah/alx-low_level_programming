@@ -45,12 +45,16 @@ void print_str(va_list tmp)
 	char *temp1;
 
 	temp1 = va_arg(tmp, char *);
-	if (temp1 == NULL)
+	switch (temp1 == NULL)
 	{
-		temp1 = "(nil)";
-		printf("%s", temp1);
+		case 1:
+			temp1 = "(nil)";
+			printf("%s", temp1);
+			break;
+		case 0:
+			printf("%s", temp1);
+			break;
 	}
-	printf("%s", temp1);
 }
 
 /**
@@ -89,9 +93,6 @@ void print_all(const char * const format, ...)
 					case 1:
 						printf(", ");
 						break;
-					case 0:
-						printf("\n");
-						break;
 				}
 			}
 			type_count++;
@@ -99,5 +100,6 @@ void print_all(const char * const format, ...)
 		type_count = 0;
 		format_count++;
 	}
+	printf("\n");
 	va_end(mix_arr);
 }
