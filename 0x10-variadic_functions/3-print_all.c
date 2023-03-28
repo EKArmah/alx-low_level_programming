@@ -74,9 +74,7 @@ void print_all(const char * const format, ...)
 		{"c", print_char},
 		{"i", print_int},
 		{"f", print_float},
-		{"s", print_str}
-	};
-
+		{"s", print_str}};
 	if (!format)
 	{
 		printf("\n");
@@ -92,7 +90,6 @@ void print_all(const char * const format, ...)
 				*temp)
 			{
 				type_ls[type_count].f(mix_arr);
-
 				switch (format[format_count + 1] != '\0')
 				{
 					case 1:
