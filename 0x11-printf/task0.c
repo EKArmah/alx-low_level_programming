@@ -17,9 +17,10 @@ int (*get_app_type_print(char frms))
 	get_type type_ls[] = {
 		{"c", print_char},
 		{"s", print_str},
-		{"%", print_mod}};
+		{"%", print_mod},
+		{NULL, NULL}};
 
-	while (type_count < 3)
+	while (type_count < 4)
 	{
 		temp = type_ls[type_count].frm;
 
