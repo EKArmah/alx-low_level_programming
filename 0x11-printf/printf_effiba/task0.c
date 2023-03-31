@@ -1,22 +1,22 @@
 #include "main.h"
+#include "conv_specs.c"
 
 /**
  * get_app_type_print - retrieve needed function for given spec char
- * @print_spec: va_list
  * @frm: specifier description in form of a char
  *
  * Return: pointer to needed function
  */
 
-int (*get_app_type_print(va_list print_spec, char *frms))
+int (*get_app_type_print(char frms))
 (va_list print_spec)
 {
-	int type_count = 0, char_count = 0;
+	int type_count = 0;
 	char *temp;
 
 	get_type type_ls[] = {
 		{"c", print_char},
-		{"s", print_s},
+		{"s", print_str},
 		{"%", print_mod}};
 
 	while (type_count < 3)
@@ -25,11 +25,27 @@ int (*get_app_type_print(va_list print_spec, char *frms))
 
 		if (frms == *temp)
 		{
-			char_count += type_ls[type_count].f(print_spec);
+			return (type_ls[type_count].f);
 		}
 		type_count++;
 	}
-	return (char_count);
+	return (NULL);
+}
+
+/**
+ * buffer_count_retr - buffer function to retrieve cumulated char count
+ * @print_spec: va_list
+ * @forms: current char specifier to be called
+ *
+ * Return: final char count
+ */
+
+int buffer_count_retr(va_list print_spec, char forms)
+{
+	int str_count;
+	str_count = get_app_type_print(forms)(print_spec);
+
+	return (str_count);
 }
 
 /**
@@ -39,31 +55,26 @@ int (*get_app_type_print(va_list print_spec, char *frms))
  * Return: number of characters printed
  */
 
-int _printf(const char * format, ...)
+int _printf(const char *format, ...)
 {
-	char *temp_char_holder;
 	va_list print_specs;
-	int final_counter = 0, counter = 0, ind_str = 0;
+	int final_counter = 0, counter = 0;
 
 	va_start(print_specs, format);
 
-	while (format[counter])
+	while (format[counter] != '\0')
 	{
-		temp_char_holder = format[counter];
-		if (*temp_char_holder == '%')
+		while (format[counter] != '%')
 		{
-			final_counter += get_app_type_print(print_specs, format[counter += 1]);
+			putchar(format[counter]);
+			final_counter++;
+			counter++;
 		}
-		else
-		{
-			while (temp_char_holder[ind_str] != '%')
-			{
-				putchar(temp_char_holder[ind_str]);
-				ind_str++;
-				final_counter++;
-			}
-		}
+		final_counter += buffer_count_retr(print_specs, format[counter += 1]);
+		printf("Current final count: %d\n", final_counter);
 		counter++;
 	}
+
+	printf("Final count: %d\n", final_counter);
 	return (final_counter);
 }

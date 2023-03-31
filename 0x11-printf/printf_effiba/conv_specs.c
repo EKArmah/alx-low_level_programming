@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_c - prints a char
+ * print_char - prints a char
  * @arg: va_list to retrieve char
  *
  * Return: num of chars printed; invariably one
@@ -10,20 +10,22 @@
 int print_char (va_list arg)
 {
 	int count = 1;
-	char curr_char = va_arg(arg, int);
+	int curr_char;
+       
+	curr_char = va_arg(arg, int);
 
 	putchar(curr_char);
 	return (count);
 }
 
 /**
- * print_s - prints a string
+ * print_str - prints a string
  * @arg: va_list to retrieve str
  *
  * Return: num of chars in str
  */
 
-int print_s (va_list arg)
+int print_str (va_list arg)
 {
 	int count = 0;
 	char *temp_str;
@@ -32,7 +34,7 @@ int print_s (va_list arg)
 	while (temp_str[count] != '\0')
 	{
 		putchar(temp_str[count]);
-		count++
+		count++;
 	}
 	return (count);
 }
@@ -47,7 +49,7 @@ int print_s (va_list arg)
 int print_mod (va_list arg)
 {
 	int count = 0;
-	char *curr_char;
+	int curr_char;
 
 	curr_char = va_arg(arg, int);
 	putchar(curr_char);

@@ -16,13 +16,14 @@
 typedef struct form
 {
 	char *frm;
-	void (*f)(va_list);
+	int (*f)(va_list);
 } get_type;
 
 
 int _printf(const char *format, ...);
-int print_s(va_list arg);
+int print_str(va_list arg);
 int print_char(va_list arg);
 int print_mod(va_list arg);
+int buffer_count_retr(va_list print_spec, char forms);
 
 #endif /*MAIN_H*/
