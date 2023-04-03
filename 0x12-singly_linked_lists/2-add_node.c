@@ -24,8 +24,15 @@ list_t *add_node(list_t **head, const char *str)
 	tru_head->str = strdup(str);
 
 	/* Assign next node of new head to the current head*/
-	tru_head->next = *head;
-	*head = tru_head;
+	if (*head == NULL)
+	{
+		tru_head->next = NULL;
+	}
+	else
+	{
+		tru_head->next = *head;
+		*head = tru_head;
+	}
 
 	return (tru_head);
 }
