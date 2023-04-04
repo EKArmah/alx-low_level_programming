@@ -3,7 +3,7 @@
 /**
  * add_nodeint - adds a new node to the beginning of a listint_t
  * @head: pointer to a pointer to linked list
- * @n: int -data 
+ * @n: int -data
  *
  * Return: address of new element
  */
@@ -20,7 +20,7 @@ listint_t *add_nodeint(listint_t **head, const int n)
 
 	if (*head == NULL)
 	{
-		tru_head->n = 0;
+		tru_head->n = n;
 		tru_head->next = NULL;
 		*head = tru_head;
 	}
