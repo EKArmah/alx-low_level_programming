@@ -9,7 +9,12 @@
 
 size_t listint_len(const listint_t *h)
 {
-	size_t count = 1;
+	size_t count = 0;
+
+	if (h)
+	{
+		count = 1;
+	}
 
 	while (h->next)
 	{
