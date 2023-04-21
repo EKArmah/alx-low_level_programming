@@ -54,8 +54,10 @@ void print_str(va_list args)
 	{
 		case 1:
 			printf("(nil)");
+			break;
 		case 0:
 			printf("%s", temp_h);
+			break;
 	}
 }
 
@@ -68,7 +70,7 @@ void print_str(va_list args)
 
 void print_all(const char * const format, ...)
 {
-	int count_form = 0, itr = 0;
+	int count_form = 0;
 	char *spec_ls = "cifs";
 	va_list args;
 
@@ -83,7 +85,7 @@ void print_all(const char * const format, ...)
 		{"i", print_int},
 		{"f", print_float},
 		{"s", print_str}
-	}
+	};
 	va_start(args, format);
 	while (format[count_form])
 	{
@@ -92,18 +94,22 @@ void print_all(const char * const format, ...)
 			switch (format[count_form])
 			{
 				case 'c':
-					get_spec_fcn[0].fcn;
+					get_spec_fcn[0].fcn(args);
+					break;
 				case 'i':
-					get_spec_fcn[1].fcn;
+					get_spec_fcn[1].fcn(args);
+					break;
 				case 'f':
-					get_spec_fcn[2].fcn;
+					get_spec_fcn[2].fcn(args);
+					break;
 				case 's':
-					get_spec_fcn[3].fcn;
+					get_spec_fcn[3].fcn(args);
+					break;
 			}
-		}
-		if (format[count_form + 2] != '\0')
-		{
-			printf(", ");
+			if (format[count_form + 1] != '\0')
+			{
+				printf(", ");
+			}
 		}
 		count_form++;
 	}
