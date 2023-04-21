@@ -50,7 +50,7 @@ void print_str(va_list args)
 	char *temp_h;
 
 	temp_h = va_arg(args, char *);
-	switch (!temp_h)
+	switch (temp_h == NULL)
 	{
 		case 1:
 			printf("(nil)");
