@@ -70,26 +70,20 @@ void print_str(va_list args)
 
 void print_all(const char * const format, ...)
 {
-	int count_form = 0;
+	int count_form = 0, itr = 0;
 	char *spec_ls = "cifs";
 	va_list args;
 
-	typedef struct call_spec_fcn
-	{
-		char *spec_name;
-		void (*fcn)(va_list);
-	} spec_fcn;
-	spec_fcn get_spec_fcn[] = 
-	{
+	spec_fcn get_spec_fcn[] = {
 		{"c", print_char},
 		{"i", print_int},
 		{"f", print_float},
-		{"s", print_str}
+		{"s", print_str},
 	};
 	va_start(args, format);
-	while (format[count_form] && format)
+	while (format && *(format + itr))
 	{
-		if (strchr(spec_ls, format[count_form]))
+		if (strchr(spec_ls, *(format + itr)) != NULL)
 		{
 			switch (format[count_form])
 			{
@@ -112,7 +106,8 @@ void print_all(const char * const format, ...)
 			}
 		}
 		count_form++;
+		itr++;
 	}
-	va_end(args);
 	printf("\n");
+	va_end(args);
 }
