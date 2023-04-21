@@ -87,7 +87,7 @@ void print_all(const char * const format, ...)
 		{"s", print_str}
 	};
 	va_start(args, format);
-	while (format[count_form])
+	while (format[count_form] && format)
 	{
 		if (strchr(spec_ls, format[count_form]))
 		{
@@ -113,5 +113,6 @@ void print_all(const char * const format, ...)
 		}
 		count_form++;
 	}
+	va_end(args);
 	printf("\n");
 }
