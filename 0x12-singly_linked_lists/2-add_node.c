@@ -2,7 +2,7 @@
 
 /**
  * add_node - Adds a new node to the beginning of the linked list
- * @head - a pointer to a linked list
+ * @head: a pointer to a linked list
  * @str: string to be used in new node
  *
  * Return: Address of the new node or NULL if failed
@@ -27,5 +27,5 @@ list_t *add_node(list_t **head, const char *str)
 		*head = new_node;
 	}
 
-	return (new_node);
+	return (*head);
 }
