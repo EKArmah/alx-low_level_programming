@@ -22,10 +22,14 @@ char *_strncat(char *dest, char *src, int n)
 	{
 		count_d++;
 	}
+
 	for (i = 0; i < n && src[i]; i++)
 	{
 		dest[count_d + i] = src[i];
 	}
-	dest[count_d++] = '\0';
+	if (count_s < n)
+	{
+		dest[count_d++] = '\0';
+	}
 	return (dest);
 }
