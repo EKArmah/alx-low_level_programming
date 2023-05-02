@@ -12,13 +12,12 @@ void free_listint2(listint_t **head)
 
 	/*Temp_trav is used to traverse the listint_t*/
 	temp_trav = *head;
-	while (temp_trav->next != NULL)
+	while ((temp_trav->next) != NULL)
 	{
 		/*Temp_del temporarily holds the current node and is freed*/
 		temp_del = temp_trav;
 		temp_trav = temp_trav->next;
 		free(temp_del);
 	}
-	free(temp_trav);
-	head = NULL;
+	*head = NULL;
 }
