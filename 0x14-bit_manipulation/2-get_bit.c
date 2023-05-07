@@ -34,7 +34,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	/*Count number of bits in binary of n*/
 
 	counter = count_bits(n, counter);
-	
+
 	if (index >= 0xffffffff)
 	{
 		return (-1);
