@@ -38,7 +38,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	{
 		return (0);
 	}
-	if ((index % 1 < 1) && (index % 1 > 0))
+	if (index > ULONG_MAX || (index % 1 < 1) && (index % 1 > 0))
 	{
 		return (-1);
 	}
