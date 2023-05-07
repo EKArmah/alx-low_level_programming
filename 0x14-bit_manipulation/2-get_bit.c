@@ -34,11 +34,17 @@ int get_bit(unsigned long int n, unsigned int index)
 	/*Count number of bits in binary of n*/
 
 	counter = count_bits(n, counter);
+		
+	if (index >= 0xffffffff)
+	{
+		return (-1);
+	}
 	if (index >= counter)
 	{
 		return (0);
 	}
-	if (index > ULONG_MAX || (index % 1 < 1) && (index % 1 > 0))
+
+	if (((index % 1 < 1) && (index % 1 > 0)))
 	{
 		return (-1);
 	}
@@ -47,8 +53,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	{
 		return (n & 1);
 	}
-
+	
 	bit_value = (n >> index) & 1;
-
 	return (bit_value);
 }
