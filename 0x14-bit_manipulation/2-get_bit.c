@@ -11,7 +11,7 @@
 unsigned long int count_bits(unsigned long int n, unsigned long int counter)
 {
 	if (n == 0 || n == 1)
-	{ 
+	{
 		return (1);
 	}
 
@@ -34,7 +34,11 @@ int get_bit(unsigned long int n, unsigned int index)
 	/*Count number of bits in binary of n*/
 
 	counter = count_bits(n, counter);
-	if (index >= counter || ((index % 1 < 1) && (index % 1 > 0)))
+	if (index >= counter)
+	{
+		return (0);
+	}
+	if ((index % 1 < 1) && (index % 1 > 0))
 	{
 		return (-1);
 	}
