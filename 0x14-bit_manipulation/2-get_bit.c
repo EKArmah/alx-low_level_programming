@@ -1,5 +1,8 @@
 #include "main.h"
 
+#define CHAR_BYTE 8
+#define MAX_ULONG (sizeof(unsigned long int) * CHAR_BYTE)
+
 /**
  * count_bits - counts the number of bits in the binary rep of n
  * @n: decimal
@@ -35,7 +38,7 @@ int get_bit(unsigned long int n, unsigned int index)
 
 	counter = count_bits(n, counter);
 
-	if (index >= 0xffffffff)
+	if (index > MAX_ULONG)
 	{
 		return (-1);
 	}
