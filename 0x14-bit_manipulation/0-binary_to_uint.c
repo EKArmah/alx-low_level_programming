@@ -35,13 +35,14 @@ unsigned int _pow(int val, int expo)
 
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int sum = 0, counter = strlen(b), iter = 0, b_size = strlen(b);
+	unsigned int sum = 0, counter, iter = 0, b_size;
 
 	if (b == NULL)
 	{
-		return (0);
+		return (sum);
 	}
 
+	b_size = strlen(b);
 	for (iter = 0, counter = strlen(b); iter < b_size; iter++, counter--)
 	{
 		if (b[iter] == '0' || b[iter] == '1')
@@ -53,7 +54,5 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		}
 	}
-
-	/*sum += ((b[iter] - '0') * _pow(2, 0));*/
 	return (sum);
 }
