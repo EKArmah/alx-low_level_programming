@@ -13,19 +13,12 @@
 
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int temp_bits_end = 0;
+	unsigned long int temp_bits_end = ~(1 << index);
 
 	if (index <= MAX_ULONG)
 	{
-		/*Right shift n by index, and | 1 to affect index*/
-		temp_bits_end = *n;
-		temp_bits_end = (*n >> index) & 0;
-
-		/*Shift back to create empty canvas to be filled*/
-		temp_bits_end <<= index;
-		temp_bits_end |= *n;
-
-		*n = temp_bits_end;
+		/* Temp is set to 0 at index with left shift and complement*/
+		*n &= temp_bits_end;
 		return (1);
 	}
 	return (-1);
