@@ -7,7 +7,7 @@
  *
  * Return: void
  */
-void error_handling(int err_val, char *str)
+void err_handling(int err_val, char *str)
 {
 	switch (err_val)
 	{
