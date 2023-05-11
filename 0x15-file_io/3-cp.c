@@ -28,7 +28,7 @@ void err_handling(int err_val, char *str)
  * @argc: number of arguments
  * @argv: arguments
  *
- * Return: 1 on success
+ * Return: 0 on success
  */
 
 int main(int argc, char *argv[])
@@ -52,6 +52,10 @@ int main(int argc, char *argv[])
 	if (script == NULL)
 		err_handling(98, argv[2]);
 
+	n_read = read(fd_1, script, 1024);
+	if (n_read == -1)
+		err_handling(98, argv[1]);
+
 	n_write = write(fd_2, script, n_read);
 	if (n_write == -1)
 		err_handling(99, argv[2]);
@@ -65,5 +69,5 @@ int main(int argc, char *argv[])
 				fd_1 == -1 ? fd_1 : fd_2);
 		exit(100);
 	}
-	return (1);
+	return (0);
 }
