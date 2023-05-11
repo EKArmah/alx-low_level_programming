@@ -12,14 +12,14 @@ void err_handling(int err_val, char *str)
 	switch (err_val)
 	{
 		case 97:
+			dprintf(2, "Usage: cp file_from file_to\n");
 			exit(97);
-			dprintf("Usage: cp file_from file_to\n");
 		case 98:
-			exit(98);
 			dprintf(2, "Error: Can't read from file %s\n", str);
+			exit(98);
 		case 99:
-			exit(99);
 			dprintf(2, "Error: Can't write to %s\n", str);
+			exit(99);
 	}
 }
 
@@ -54,10 +54,8 @@ int main(int argc, char *argv[])
 
 	n_write = write(fd_2, script, n_read);
 	if (n_write == -1)
-	{
-		exit(99);
-		dprintf(2, "Error: Can't write to %s\n", argv[2]);
-	}
+		err_handling(99, argv[2]);
+
 	free(script);
 	n_close1 = close(fd_1);
 	n_close2 = close(fd_2);
@@ -65,6 +63,7 @@ int main(int argc, char *argv[])
 	{
 		dprintf(2, "Error: Can't close fd %i\n",
 				fd_1 == -1 ? fd_1 : fd_2);
+		exit(100);
 	}
 	return (1);
 }
